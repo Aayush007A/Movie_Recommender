@@ -1,5 +1,5 @@
 // Replace 'YOUR_API_KEY' below with your API key retrieved from https://www.themoviedb.org
-var myAPI = '761acf9d4614c5719f5e93d0d19834de'  // global string to be consistent with future usages elsewhere
+var myAPI = 'f836c7e28e1198b2ac96e0d9ab5efcfd'  // global string to be consistent with future usages elsewhere
 $(function() {
   $('#movie_list').css('display','none');
   $('#autoComplete').blur(function() {
@@ -72,7 +72,9 @@ function load_details(my_api_key,search,isQuerySearch){
         $('.fail').css('display','none');
         $('.results').delay(1000).css('display','block');
         var movie_id = movie.id;
+        console.log(movie_id);
         var movie_title = movie.title;
+        console.log(movie_title);
         var movie_title_org = movie.original_title;
         get_movie_details(movie_id,my_api_key,movie_title,movie_title_org);
       }
@@ -143,7 +145,7 @@ function get_movie_details(movie_id,my_api_key,movie_title,movie_title_org) {
     },
   });
 }
-
+//'https://api.themoviedb.org/3/movie/5?api_key=761acf9d4614c5719f5e93d0d19834de'
 // passing all the details to python's flask for displaying and scraping the movie reviews using imdb id
 function show_details(movie_details,movie_title,my_api_key,movie_id,movie_title_org){
   var imdb_id = movie_details.imdb_id;
@@ -173,15 +175,17 @@ function show_details(movie_details,movie_title,my_api_key,movie_id,movie_title_
     runtime = Math.floor(runtime/60)+" hour(s) "+(runtime%60)+" min(s)"
   }
 
+  console.log(movie_id)
   // calling `get_movie_cast` to get the top cast for the queried movie
   movie_cast = get_movie_cast(movie_id,my_api_key);
+  console.log(movie_cast)
   
   // calling `get_individual_cast` to get the individual cast details
   ind_cast = get_individual_cast(movie_cast,my_api_key);
-
+  console.log(ind_cast)
   // calling `get_recommendations` to get the recommended movies for the given movie id from the TMDB API
   recommendations = get_recommendations(movie_id, my_api_key);
-  
+
   details = {
       'title':movie_title,
       'cast_ids':JSON.stringify(movie_cast.cast_ids),
@@ -282,8 +286,10 @@ function get_movie_cast(movie_id,my_api_key){
             cast_ids.push(my_movie.cast[my_cast].id)
             cast_names.push(my_movie.cast[my_cast].name);
             cast_chars.push(my_movie.cast[my_cast].character);
+
             if(my_movie.cast[my_cast].profile_path){
               cast_profiles.push("https://image.tmdb.org/t/p/original"+my_movie.cast[my_cast].profile_path);
+
             }
             else {
               cast_profiles.push("static/default.jpg");
@@ -297,6 +303,10 @@ function get_movie_cast(movie_id,my_api_key){
       }
     });
 
+//    console.log(cast_ids)
+//    console.log(cast_names);
+//    console.log(cast_chars)
+//    console.log(cast_profiles)
     return {cast_ids:cast_ids,cast_names:cast_names,cast_chars:cast_chars,cast_profiles:cast_profiles};
   }
 
