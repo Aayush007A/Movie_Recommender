@@ -129,26 +129,30 @@ form.sign-in-form {
 
 .facebook:hover{
   color: white;
-  background-color: blue;
+  background-color: rgb(50, 50, 187);
   border: 1px solid white;
+  transition: 1s ease;
 }
 
 .twitter:hover{
   color: white;
   background-color: black;
   border: 1px solid white;
+  transition: 1s ease;
 }
 
 .google:hover{
   color: white;
   background-color: rgb(131, 188, 66);
   border: 1px solid white;
+  transition: 1s ease;
 }
 
 .linkedin:hover{
   color: white;
   background-color: rgb(27, 58, 116);
   border: 1px solid white;
+  transition: 1s ease;
 }
 
 
