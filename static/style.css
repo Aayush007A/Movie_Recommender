@@ -1,3 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+:root {
+  --primary: #eeeeee;
+  --secondary: #227c70;
+  --green: #82cd47;
+  --secondary-light: rgb(34, 124, 112, 0.2);
+  --secondary-light-2: rgb(127, 183, 126, 0.1);
+  --white: #fff;
+  --black: #393e46;
+
+  --shadow: 0px 2px 8px 0px var(--secondary-light);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background-color: var(--black);
+  padding: 0 8%;
+  box-shadow: var(--shadow);
+  top:0;
+  z-index: 1;
+  position: fixed;
+  width:100%;
+  overflow: hidden;
+  border-bottom: 2px solid white;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
@@ -63,11 +91,17 @@
 
 .footer {
 	color: #e4e0e0;
-	background-color:  #800080;
+	/* background-color:  #800080; */
+	background-color: #000000;
+	border: 2px solid white;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
 	text-align:center;
 	position: fixed;
 	bottom: 0;
  	width: 100%;
+	height:70px;
 }
 
 .social-icons {
@@ -88,8 +122,8 @@ h1 {
 
 .fa-arrow-up {
 	font-size: 1.5em;
-	color: black;
-    background: #E0B0FF;
+	color: white;
+    background: var(--black);
     padding: 10px;
 	border-radius: 50%;
 	float: right;
@@ -100,6 +134,15 @@ h1 {
 
 .fa-arrow-up:hover {
 	cursor: pointer;
+}
+
+.navbar h1{
+	top:-20px;
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	right:530px;
+	color: white;
 }
 
 .app-title:hover {

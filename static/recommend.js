@@ -225,9 +225,9 @@ function show_details(movie_details,movie_title,my_api_key,movie_id,movie_title_
       $('.results').html(response);
       $('#autoComplete').val('');
       $('.footer').css('position','absolute');
-      if ($('.movie-content')) {
-        $('.movie-content').after('<div class="gototop"><i title="Go to Top" class="fa fa-arrow-up"></i></div>');
-      }
+      // if ($('.movie-content')) {
+      //   $('.movie-content').after('<div class="gototop"><i title="Go to Top" class="fa fa-arrow-up"></i></div>');
+      // }
       $(window).scrollTop(0);
     }
   });
@@ -292,7 +292,7 @@ function get_movie_cast(movie_id,my_api_key){
 
             }
             else {
-              cast_profiles.push("static/default.jpg");
+              cast_profiles.push("static/demo.png");
             }
           }
         }
@@ -345,3 +345,14 @@ function get_movie_cast(movie_id,my_api_key){
     });
     return {rec_movies:rec_movies,rec_movies_org:rec_movies_org,rec_posters:rec_posters,rec_year:rec_year,rec_vote:rec_vote,rec_ids:rec_ids};
   }
+
+  let profileDropdownList = document.querySelector(".profile-dropdown-list");
+  let btn = document.querySelector(".profile-dropdown-btn");
+  
+  let classList = profileDropdownList.classList;
+  
+  const toggle = () => classList.toggle("active");
+  
+  window.addEventListener("click", function (e) {
+    if (!btn.contains(e.target)) classList.remove("active");
+  });
