@@ -11,6 +11,7 @@ import requests
 from datetime import date, datetime
 import os
 import mysql.connector
+import hashlib
 
 # load the nlp model and tfidf vectorizer from disk
 filename = 'nlp_model.pkl'
@@ -228,9 +229,14 @@ def recommend():
         return redirect('/')
 
 
+# @app.route('/logout')
+# def logout():
+#     session.pop('user_id')
+#     return redirect('/')
 @app.route('/logout')
 def logout():
-    session.pop('user_id')
+    if 'user_id' in session:
+        session.pop('user_id')
     return redirect('/')
 
 
