@@ -23,6 +23,8 @@
 
   <!-- External CSS -->
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+  <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+
 
   <script type="text/javascript">
     var films = {{suggestions|tojson}};
@@ -36,10 +38,10 @@
 <body id="content" style="font-family: 'Noto Sans JP', sans-serif;">
 <div class="body-content">
 	<div class="ml-container" style="display: block;">
-		<a href="https://github.com/Aayush007A" target="_blank" class="github-corner" title="View source on GitHub">
+		<a href="https://github.com/Aayush007A/Movie_Recommender" target="_blank" class="github-corner" title="View source on GitHub">
 		      <svg data-toggle="tooltip"
 		      data-placement="left" width="80" height="80" viewBox="0 0 250 250"
-			style="fill:#800080; color:#fff; position: fixed;z-index:100; top: 0; border: 0; right: 0;"
+			    style="fill:#000; color:#fff; position: fixed;z-index:100; top: 0; border:0; right: 0; border-left:none;border-bottom: none;"
                    aria-hidden="true">
 			<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
 			<path
@@ -51,18 +53,19 @@
 		      </svg>
 		    </a>
         <span class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 shadow-sm">
-<!--            <a class="btn btn-outline-info" href="/logout">Logout</a>-->
-            <a class="btn btn-outline-light" href="/logout" role="button">Logout</a>
+            <a class="btn btn-outline-light" href="/logout" role="button" style="z-index: 10;position: fixed;top:20px;">Logout</a>
         </span>
-    <center><h1 class="app-title">The Movie Recommender</h1></center>
-        <div class="form-group shadow-textarea" style="margin-top: 30px;text-align: center;color: white;">
+        <div class="form-group shadow-textarea" style="margin-top: 90px;text-align: center;color: white;">
         <input type="text" name="movie" class="movie form-control" id="autoComplete" autocomplete="off" placeholder="Enter the Movie Name" style="background-color: #ffffff;border-color:#ffffff;width: 60%;color: #181818" required="required" />
         <br>
         </div>
+        <nav class="navbar">
+          <h1 class="app-title">The Movie Recommender</h1>
+        </nav>
 
     <div class="form-group" style="text-align: center;">
       <button class="btn btn-primary btn-block movie-button"
-              style="background-color: #800080;text-align: center;border-color: #ffffff;width:120px;" disabled="true" >
+              style="background-color: #000;text-align: center;border-color: #ffffff;width:120px;" disabled="true" >
           Enter</button><br><br>
     </div>
 	</div>
@@ -83,13 +86,16 @@
 	
 	<footer class="footer">
     <br/> 
-    <div class="social" style="margin-bottom: 8px">
+    <!-- <div class="social" style="margin-bottom: 8px">
     <a class="social-icons" href="https://github.com/Aayush007A" target="_blank"><i class="fa fa-github-alt"
                                                                            style="font-size:24px;color: #e4e0e0"></i></a>
     <a class="social-icons" href="https://linkedin.com/in/Aayush Upadhyay" target="_blank"><i class="fa fa-linkedin-square" style="font-size:24px;color: #e4e0e0"></i></a>
     <a class="social-icons" href="https://www.instagram.com/au_since_2002" target="_blank"><i class="fa fa-instagram"
                                                                                   style="font-size:24px;color: #e4e0e0"></i></a>
     <a class="social-icons" href="https://twitter.com" target="_blank"><i class="fa fa-twitter" style="font-size:24px;color: #e4e0e0"></i></a>
+  </div> -->
+  <div>
+    <p>&copy; 2024 The Movie Cinema Made with <span style="color: #e25555;">&#10084;</span> by Aayush Upadhyay</p>
   </div>
   </footer>
 	</div>

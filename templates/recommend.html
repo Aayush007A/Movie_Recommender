@@ -2,10 +2,11 @@
 <html>
 
 <head>
-  <title>NEW</title>
+  <title>Recommendations</title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
@@ -66,7 +67,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style="background-color: #800080;color: white;">
+        <div class="modal-header" style="background-color: #000;color: white; border: 2px solid white;">
           <h5 class="modal-title" id="exampleModalLabel3">{{name}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" style="color: white">&times;</span>
@@ -113,7 +114,7 @@
         <img class="card-img-top cast-img" id="{{details[0]}}" height="360" width="240" alt="{{name}} - profile"
           src="{{details[2]}}">
         <figcaption class="fig">
-          <button class="card-btn btn" style="background-color: #800080; color: white; border: 2px solid white;">
+          <button class="card-btn btn" style="background-color: #000; color: white; border: 2px solid white;">
             Know More
           </button>
         </figcaption>
@@ -143,7 +144,7 @@
 
         <tbody>
           {% for review, status in reviews.items() if not reviews.hidden %}
-          <tr style="background-color:#800080;">
+          <tr style="background-color:#000000a3;">
             <td>{{review}}</td>
             <td>
               <center>
@@ -203,7 +204,7 @@
             style="font-size:15px;position:absolute;bottom:20px;left:15px;background: #000000b8;color:white;padding: 5px;border-radius: 10px;">{{details[3]}}</span>
         </div>
         <figcaption class="fig">
-          <button class="card-btn btn" style="background-color: #800080; color: white; border: 2px solid white;"> Click
+          <button class="card-btn btn" style="background-color: #000; color: white; border: 2px solid white;"> Click
             Me </button>
         </figcaption>
       </div>
@@ -241,7 +242,7 @@
               style="font-size:15px;position:absolute;bottom:20px;left:15px;background: #000000b8;color:white;padding: 5px;border-radius: 10px;">{{details[3]}}</span>
           </div>
           <figcaption class="fig">
-            <button class="card-btn btn" style="background-color: #800080; color: white; border: 2px solid white;">
+            <button class="card-btn btn" style="background-color: #000; color: white; border: 2px solid white;">
               Click Me </button>
           </figcaption>
         </div>
