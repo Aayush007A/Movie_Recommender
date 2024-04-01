@@ -229,10 +229,6 @@ def recommend():
         return redirect('/')
 
 
-# @app.route('/logout')
-# def logout():
-#     session.pop('user_id')
-#     return redirect('/')
 @app.route('/logout')
 def logout():
     if 'user_id' in session:
