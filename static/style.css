@@ -7,10 +7,14 @@
   --secondary-light-2: rgb(127, 183, 126, 0.1);
   --white: #fff;
   --black: #393e46;
+  --special: #e0b0ff;
 
   --shadow: 0px 2px 8px 0px var(--secondary-light);
 }
-
+::selection {
+  background-color: white; 
+  color: black;
+}
 .navbar {
   display: flex;
   align-items: center;
@@ -148,6 +152,19 @@ h1 {
 .logo{
 	right: 1030px;
 	position: absolute;
+}
+
+.username{
+  color: var(--white);
+  right:100px;
+  position: absolute;
+  top:25px;
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+}
+
+.name{
+  color: var(--special);
 }
 
 @keyframes octocat-wave {

@@ -54,7 +54,7 @@
     />
 
     <script type="text/javascript">
-      var films = {{suggestions|tojson}};
+      var films = {{suggestions|tojson}}; 
       $(document).ready(function(){
         $("#myModal").modal('show');
       });
@@ -137,7 +137,8 @@
         </div>
         <nav class="navbar">
           <img src="../static/Logo.png" width="50px" height="50px" class="logo">
-          <h1 class="app-title">The Movie Recommender</h1>
+          <h1>The Movie Recommender</h1>
+          <p class="username">Welcome <span class="name">{{username}}</span>&nbsp;&#128526;</p>
         </nav>
 
         <div class="form-group" style="text-align: center">

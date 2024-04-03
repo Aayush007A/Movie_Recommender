@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request, redirect, session
+import pymysql.cursors
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import json
@@ -11,7 +12,7 @@ import requests
 from datetime import date, datetime
 import os
 import mysql.connector
-import hashlib
+import json
 
 # load the nlp model and tfidf vectorizer from disk
 filename = 'nlp_model.pkl'
@@ -43,7 +44,7 @@ def get_suggestions():
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-conn = mysql.connector.connect(host="localhost", user="Ronaldo7", password="a7b7e777", database="cinemamovie")
+conn = mysql.connector.connect(host="localhost", user="<username>", password="<password>", database="<dbname>")
 curser = conn.cursor()
 
 
@@ -56,7 +57,9 @@ def login():
 def home():
     if 'user_id' in session:
         suggestions = get_suggestions()
-        return render_template('home.html', suggestions=suggestions)
+        name=session.get("name")
+        print(name)
+        return render_template('home.html', suggestions=suggestions,username=name)
     else:
         return redirect('/')
 
@@ -69,9 +72,10 @@ def login_validation():
     curser.execute(""" SELECT * FROM `user` WHERE `email` LIKE '{}' AND `password` LIKE '{}' """.format(email,
                                                                                                         password))
     users = curser.fetchall()
-
+    
     if len(users) > 0:
         session['user_id'] = users[0][0]
+        session["name"]=users[0][3]
         return redirect('/home')
     else:
         return redirect('/')
