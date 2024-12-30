@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request, redirect, session
-import pymysql.cursors
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import json
@@ -13,6 +12,10 @@ from datetime import date, datetime
 import os
 import mysql.connector
 import json
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.os_manager import ChromeType
+from bs4 import BeautifulSoup
 
 # load the nlp model and tfidf vectorizer from disk
 filename = 'nlp_model.pkl'
@@ -44,7 +47,7 @@ def get_suggestions():
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-conn = mysql.connector.connect(host="localhost", user="<username>", password="<password>", database="<dbname>")
+conn = mysql.connector.connect(host="localhost", user="root", password="", database="cinemamovie")
 curser = conn.cursor()
 
 
@@ -53,15 +56,31 @@ def login():
     return render_template('login.html')
 
 
-@app.route("/home")
+@app.route("/home-marvel")
 def home():
     if 'user_id' in session:
         suggestions = get_suggestions()
         name=session.get("name")
-        print(name)
+        
         return render_template('home.html', suggestions=suggestions,username=name)
     else:
         return redirect('/')
+    
+
+@app.route("/home-barbie")
+def home1():
+    if 'user_id' in session:
+        suggestions = get_suggestions()
+        name=session.get("name")
+        
+        return render_template('home1.html', suggestions=suggestions,username=name)
+    else:
+        return redirect('/')
+
+
+@app.route("/404")
+def lostpage():
+    return render_template('blackbox.html')
 
 
 @app.route('/login_validation', methods=['POST', 'GET'])
@@ -75,10 +94,10 @@ def login_validation():
     
     if len(users) > 0:
         session['user_id'] = users[0][0]
-        session["name"]=users[0][3]
-        return redirect('/home')
+        session["name"]=users[0][1]
+        return redirect('/home-marvel')
     else:
-        return redirect('/')
+        return redirect('/404')
 
 
 @app.route('/add_user', methods=['POST'])
@@ -115,7 +134,6 @@ def populate_matches():
                                                                                                     'release_date'] else "N/A",
                                                                                                 movies_list[i]['id']] for i
                        in range(len(movies_list))}
-
         return render_template('recommend.html', movie_cards=movie_cards)
     else:
         return redirect('/')
@@ -190,9 +208,17 @@ def recommend():
 
         if imdb_id != "":
             # web scraping to get user reviews from IMDB site
-            source = urllib.request.urlopen('https://www.imdb.com/title/{}/reviews?ref_=tt_ov_rt'.format(imdb_id)).read()
-            soup = bs.BeautifulSoup(source, 'lxml')
-            soup_result = soup.find_all("div", {"class": "text show-more__control"})
+            options = webdriver.ChromeOptions()
+            options.add_argument('--headless')
+            driver = webdriver.Chrome()
+            url = f'https://www.imdb.com/title/{imdb_id}/reviews?ref_=tt_ov_rt'
+            driver.get(url)
+            # Wait for the page to load fully
+            driver.implicitly_wait(5)
+            # Get the page source
+            html = driver.page_source
+            soup = BeautifulSoup(html, 'lxml')
+            soup_result = soup.find_all("div", {"class": "ipc-html-content-inner-div"})
 
             reviews_list = []  # list of reviews
             reviews_status = []  # list of comments (good or bad)
@@ -204,6 +230,7 @@ def recommend():
                     movie_vector = vectorizer.transform(movie_review_list)
                     pred = clf.predict(movie_vector)
                     reviews_status.append('Positive' if pred else 'Negative')
+            driver.quit()   
 
             # getting current date
             movie_rel_date = ""
@@ -215,7 +242,7 @@ def recommend():
 
             # combining reviews and comments into a dictionary
             movie_reviews = {reviews_list[i]: reviews_status[i] for i in range(len(reviews_list))}
-
+        
             # passing all the data to the html file
             return render_template('recommend.html', title=title, poster=poster, overview=overview,
                                    vote_average=vote_average,
@@ -242,3 +269,7 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+

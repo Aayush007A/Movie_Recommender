@@ -3,11 +3,11 @@ gunicorn==21.0.1
 Jinja2==3.1.2
 MarkupSafe==2.1.3
 Werkzeug==2.3.6
-numpy>=1.9.2
-scipy>=0.15.1
+numpy>=1.22.3
+scipy>=1.7.3
 nltk==3.8.1
-scikit-learn>=0.18
-pandas>=0.19
+scikit-learn>=1.0.2
+pandas>=1.4.3
 beautifulsoup4==4.12.2
 jsonschema==4.18.3
 tmdbv3api==1.7.7
@@ -17,3 +17,6 @@ requests==2.31.0
 pickleshare==0.7.5
 mysql-connector-python~=8.1.0
 pymysql
+jupyter
+selenium
+webdriver_manager

@@ -3,27 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../static/login.ico" type="image/x-icon">
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
+    <link rel="shortcut icon" href="../static/icon/login.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/81f14a55be.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
     <title>Sign in & Sign up Form</title>
-  </head>
+  </head>  
   <body>
     <div class="container">
+      <!-- <audio loop controls>
+        <source src="../static/soundtrack/let-the-mystery-unfold-122118.mp3" type="audio/mp3">
+      </audio> -->
+      <!-- ============= VIDEO ================== -->
+      <video autoplay loop muted plays-inline class="background-clip">
+        <source src="static/login_video/background6.mp4" type="video/mp4">
+      </video>
       <div class="forms-container">
         <div class="signin-signup">
+          <!-- ===================== SIGN IN FORM ======================= -->
           <form action="/login_validation" class="sign-in-form" method="POST">
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" name="email" />
+              <input type="email" placeholder="Email" name="email" required autocomplete="off" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name="password"/>
+              <input type="password" placeholder="Password" name="password" id="myInput" required />
+              <input type="checkbox" onclick="myFunction()" class="hide"><span class="hide-text">Show</span>
+              <!-- <div class="strength"></div> -->
             </div>
             <input type="submit" value="Login" class="btn solid" />
             <p class="social-text">Or Sign in with social platforms</p>
@@ -42,33 +49,37 @@
               </a>
             </div>
           </form>
+
+           <!-- ===================== SIGN OUT FORM ======================= -->
           <form action="/add_user" class="sign-up-form" method="POST">
             <h2 class="title">Sign up</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" name="user_name"/>
+              <input type="text" placeholder="Username" name="user_name" required autocomplete="off"/>
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" name="email"/>
+              <input type="email" placeholder="Email" name="email" pattern=".+@gmail\.com" required autocomplete="off"/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" name="password"/>
+              <input type="password" placeholder="Password" name="password" id="myInput1" required/>
+              <input type="checkbox" onclick="myFunction()" class="hide1"><span class="hide-text">Show</span>
+              <div class="strength"></div>
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+            <input type="submit" class="btn1" value="Sign up" />
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
-              <a href="#" class="social-icon facebook">
+              <a href="#" class="social-icon facebook1">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="#" class="social-icon twitter">
+              <a href="#" class="social-icon twitter1">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a href="#" class="social-icon google">
+              <a href="#" class="social-icon google1">
                 <i class="fab fa-google"></i>
               </a>
-              <a href="#" class="social-icon linkedin">
+              <a href="#" class="social-icon linkedin1">
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
@@ -76,34 +87,41 @@
         </div>
       </div>
 
+      <!-- =================== PANEL STARTING ================ -->
       <div class="panels-container">
+
+        <!-- =================== LEFT PANEL STARTING ================ -->
         <div class="panel left-panel">
           <div class="content">
             <h3>New here ?</h3>
             <p>
-              Sign Up now for creating your account in the Movie Cinema
+              Movie journey starts with our personalized picks for you so Sign Up now.
             </p>
             <button class="btn transparent" id="sign-up-btn" >
               Sign up
             </button>
           </div>
-          <img src="static/log.svg" class="image" alt="" />
+          <img src="static/illustartion/social-media-post.png" class="image" alt="" />
         </div>
+        <!-- =================== LEFT PANEL ENDING ================ -->
+        <!-- =================== RIGHT PANEL STARTING ================ -->
         <div class="panel right-panel">
           <div class="content">
             <h3>One of us ?</h3>
             <p>
-              Sign In for experiencing the power of movie recommendation
+              Sign In for uncover new movies you'll love with our recommendations.
             </p>
             <button class="btn transparent" id="sign-in-btn">
               Sign in
             </button>
           </div>
-          <img src="static/register.svg" class="image" alt="" />
+          <img src="static/illustartion/businessman-working-on-laptop.png" class="image" alt="" />
         </div>
       </div>
+      <!-- =================== RIGHT PANEL ENDING ================ -->
     </div>
 
-    <script src="static/app.js"></script>
+    <script src="static/js/app.js"></script>
+    </script>
   </body>
 </html>

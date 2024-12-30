@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      content="width=device-width, initial-scale=1"
     />
 
     <!-- Google Fonts -->
@@ -22,6 +22,10 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
     />
 
     <!-- Bootstrap -->
@@ -45,16 +49,16 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="{{ url_for('static',filename='style.css') }}"
+      href="{{ url_for('static',filename='css/style.css') }}"
     />
     <link
       rel="shortcut icon"
-      href="../static/favicon.ico"
+      href="../static/icon/favicon.ico"
       type="image/x-icon"
     />
 
     <script type="text/javascript">
-      var films = {{suggestions|tojson}}; 
+      var films = {{suggestions|tojson}};
       $(document).ready(function(){
         $("#myModal").modal('show');
       });
@@ -64,64 +68,182 @@
   <body id="content" style="font-family: 'Noto Sans JP', sans-serif">
     <div class="body-content">
       <div class="ml-container" style="display: block">
-        <a
-          href="https://github.com/Aayush007A/Movie_Recommender"
-          target="_blank"
-          class="github-corner"
-          title="View source on GitHub"
-        >
-          <svg
-            data-toggle="tooltip"
-            data-placement="left"
-            width="70"
-            height="70"
-            viewBox="0 0 250 250"
-            style="
-              fill: #000;
-              color: #fff;
-              position: fixed;
-              z-index: 100;
-              top: 0;
-              border: 0;
-              right: 0;
-              border-left: none;
-              border-bottom: none;
-            "
-            aria-hidden="true"
+  
+        <main class="main">
+          <!--==================== HOME ====================-->
+          <section class="home section" id="home">
+            <!-- =========== ANIMATION EFFECTS ============= -->
+            <div class="rain"></div>
+            <div class="lightining"></div>
+            <div class="star star1"></div>
+            <div class="star star2"></div>
+            <div class="star star3"></div>
+            <div class="star star4"></div>
+            <div class="star star5"></div>
+            <div class="star star6"></div>
+            <div class="star star7"></div>
+            <div class="star star8"></div>
+            <img
+              src="static/parallax/home-moon.png"
+              alt="moon image"
+              class="home__moon parallax"
+              data-rellax-speed="-15"
+            />
+            <img
+              src="static/superhero/spiderman-removebg-preview.png"
+              alt="spiderman image"
+              class="home__spider parallax"
+              data-rellax-speed="-5"
+            />
+            <img
+              src="static/superhero/ironman-removebg-preview.png"
+              alt="iron image"
+              class="home__iron parallax"
+              data-rellax-speed="-2"
+            />
+            <img
+              src="static/superhero/CaptainA-removebg-preview.png"
+              alt="captain america image"
+              class="home__captain parallax"
+              data-rellax-speed="-2"
+              style="height: 250px;"
+            />
+            <img
+              src="static/superhero/mad-removebg-preview.png"
+              alt="doctor strange image"
+              class="home__strange parallax"
+              data-rellax-speed="-2"
+            />
+            <img
+              src="static/superhero/hulk-removebg-preview.png"
+              alt="hulk image"
+              class="home__hulk parallax"
+              data-rellax-speed="-2"
+            />
+            <img
+              src="static/parallax/home-mountain-3.png"
+              alt="mountain image"
+              class="home__mountain-3 parallax"
+              data-rellax-speed="-8"
+            />
+            <img
+              src="static/parallax/home-mountain-2.png"
+              alt="mountain image"
+              class="home__mountain-2 parallax"
+              data-rellax-speed="-8"
+            />
+            <img
+              src="static/parallax/home-pine-tree.png"
+              alt="pine image"
+              class="home__pine parallax"
+              data-rellax-speed="-10"
+            />
+            <img
+            src="static/superhero/ThunderThor.png"
+            alt="thor image"
+            class="home__trineo parallax"
+            data-rellax-speed="-1"
+            />
+            <img
+              src="static/parallax/home-village.png"
+              alt="village image"
+              class="home__village parallax"
+              data-rellax-speed="-10"
+            />
+            <img
+              src="static/parallax/home-snow.png"
+              alt="snow image"
+              class="home__snow parallax"
+            />
+            <img
+              src="static/parallax/home-mountain-1.png"
+              alt="mountain image"
+              class="home__mountain-1 parallax"
+            />
+
+            <!-- ================ SCROLL EFFECT ================ -->
+            <div class="scroll-down-logo">
+              <div class="chevron"></div>
+              <div class="chevron"></div>
+              <div class="chevron"></div>
+              <span class="text">Scroll down</span>
+            </div>
+          </section>
+        </main>
+
+        <!-- ================= NAVBAR STARTING ================= -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" style="position: fixed;">
+
+           <!-- ============= LOGOUT BUTTON ================ -->
+          <span
+          class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 shadow-sm" 
           >
-            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-            <path
-              d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor"
-              style="transform-origin: 130px 106px"
-              class="octo-arm"
-            ></path>
-            <path
-              d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor"
-              class="octo-body"
-            ></path>
-          </svg>
-        </a>
-        <span
-          class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 shadow-sm"
-        >
           <a
             class="btn btn-outline-danger logout"
             href="/logout"
             role="button"
-            style="z-index: 10; position: fixed; top: 17px"
+            style="position: fixed; top: 23px"
             >Logout</a
           >
         </span>
+
+        <!-- =================== MUSIC PLAYER =================== -->
+        <div class="music">
+          <h2 class="title">Music Name</h2>
+          <div class="player">
+            <audio src="" class="audio" loop></audio>
+            <div class="btns">
+              <span class="prev">
+                <ion-icon name="play-back-outline"></ion-icon>
+              </span>
+              <span class="playpause">
+                <ion-icon name="play-outline"></ion-icon>
+              </span>
+              <span class="next">
+                <ion-icon name="play-forward-outline"></ion-icon>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- =============== TITLE LOGO ==================== -->
+          <img
+            src="../static/icon/navbar_img.png"
+            width="50px"
+            height="50px"
+            class="logo"
+          />
+
+          <!-- =============== TITLE ====================== -->
+          <h1 style="position: absolute; right: 470px; top: -7px; font-size: 40px;">The Movie Recommender</h1>
+          <p class="username" style="position: absolute; right: 100px; top: 27px; font-size: 22px;">
+            Welcome <span class="name">{{username}}</span>&nbsp;&#128526;
+          </p>
+           
+
+          <!-- =============== THEME CHANGE BUTTON ================= -->
+          <a href="/home-barbie" title="Switch Theme">
+            <img
+            src="../static/icon/bear.png"
+            width="50px"
+            height="50px"
+            class="switch"
+            style="position: absolute; right: 35px; top: 18px;"
+            onclick="changeCSS('theme.css')"
+          />
+          </a>
+        </nav>
+
+        <!-- ================= NAVBAR ENDING ================ -->
+        <!-- ================= MAIN PAGE STARTING =========== -->
         <div
-          class="form-group shadow-textarea"
+          class=" shadow-textarea spacer"
           style="margin-top: 90px; text-align: center; color: white"
         >
           <input
             type="text"
             name="movie"
-            class="movie form-control"
+            class="movie"
             id="autoComplete"
             autocomplete="off"
             placeholder="Enter the Movie Name"
@@ -135,13 +257,7 @@
           />
           <br />
         </div>
-        <nav class="navbar">
-          <img src="../static/Logo.png" width="50px" height="50px" class="logo">
-          <h1>The Movie Recommender</h1>
-          <p class="username">Welcome <span class="name">{{username}}</span>&nbsp;&#128526;</p>
-        </nav>
-
-        <div class="form-group" style="text-align: center">
+        <div class=" enterbtn" style="text-align: center">
           <button
             class="btn btn-primary btn-block movie-button"
             style="
@@ -149,6 +265,7 @@
               text-align: center;
               border-color: #ffffff;
               width: 120px;
+              cursor: pointer;
             "
             disabled="true"
           >
@@ -156,9 +273,11 @@
           ><br /><br />
         </div>
       </div>
+      <!-- ================= MAIN PAGE ENDING =========== -->
 
       <div id="loader" class="text-center"></div>
 
+      <!-- ================= WRONG SPELLED MOVIE RESULT ============== -->
       <div class="fail">
         <center>
           <h3 style="color: white">
@@ -168,39 +287,44 @@
         </center>
       </div>
 
+      <!-- ================= RESULT SHOWED HERE ====================== -->
       <div class="results">
         <center>
           <h2 id="name" class="text-uppercase"></h2>
         </center>
       </div>
 
+      <!-- ================ FOOTER STARTING ===================== -->
       <footer class="footer">
         <br />
-        <!-- <div class="social" style="margin-bottom: 8px">
-    <a class="social-icons" href="https://github.com/Aayush007A" target="_blank"><i class="fa fa-github-alt"
-                                                                           style="font-size:24px;color: #e4e0e0"></i></a>
-    <a class="social-icons" href="https://linkedin.com/in/Aayush Upadhyay" target="_blank"><i class="fa fa-linkedin-square" style="font-size:24px;color: #e4e0e0"></i></a>
-    <a class="social-icons" href="https://www.instagram.com/au_since_2002" target="_blank"><i class="fa fa-instagram"
-                                                                                  style="font-size:24px;color: #e4e0e0"></i></a>
-    <a class="social-icons" href="https://twitter.com" target="_blank"><i class="fa fa-twitter" style="font-size:24px;color: #e4e0e0"></i></a>
-  </div> -->
         <div>
           <p>
             &copy; 2024 The Movie Cinema Made with
             <span style="color: #e25555">&#10084;</span> by Aayush Upadhyay
           </p>
+          <div id="top">
+            <a href="#"><img src="static/icon/top.png" alt="top image"></a>
+          </div>
+          <script type="text/javascript">
+            var scroll = document.getElementById('top');
+            window.addEventListener('scroll', function(){
+                scroll.style.transform = "rotate("+ window.pageYOffset + "deg)";
+            });
+          </script>
         </div>
       </footer>
+       <!-- ================ FOOTER ENDING ===================== -->
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
     <script
       type="text/javascript"
-      src="{{url_for('static', filename='autocomplete.js')}}"
+      src="{{url_for('static', filename='js/autocomplete.js')}}"
     ></script>
     <script
       type="text/javascript"
-      src="{{url_for('static', filename='recommend.js')}}"
+      src="{{url_for('static', filename='js/recommend.js')}}"
     ></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -217,5 +341,128 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <!--=============== RELLAX JS ===============-->
+    <script src="static/js/rellax.min.js"></script>
+
+    <!--=============== GSAP ===============-->
+    <script src="static/js/gsap.min.js"></script>
+
+    <!--=============== IONICICONS ===============-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="static/js/main.js"></script>
+
+    <script>
+      /* ====================MUSIC============================= */
+    const title = document.querySelector('.title');
+    const prev = document.querySelector('.prev');
+    const playpause = document.querySelector('.playpause');
+    const next = document.querySelector('.next');
+    const audio = document.querySelector('.audio');
+
+    const songList = [
+        {
+            path:'static/soundtrack/The Avengers Theme Song.mp3',
+            songName: 'The Avengers'
+        },
+        {
+            path:'static/soundtrack/Titanic-Theme.mp3',
+            songName: 'Titanic Theme'
+        },
+        {
+            path:'static/soundtrack/wonder-woman-ringtone.mp3',
+            songName: 'Wonder Woman'
+        },
+        {
+            path:'static/soundtrack/Moje More-(PagalWorld).mp3',
+            songName: 'Moye More'
+        },
+        {
+            path: 'static/soundtrack/Bella Ciao(PagalWorld.com.cm).mp3',
+            songName: ' Money Heist'
+        },
+        {
+            path: 'static/soundtrack/Pirates-Of-The-Caribbean-Theme.mp3',
+            songName: 'Jack Sparrow'
+        },
+        {
+            path: 'static/soundtrack/Bones-(Mr-Jat.in).mp3',
+            songName: 'Bones Original'
+        },
+        {
+            path: 'static/soundtrack/dark-action-aggressive-anxiety-horror-countdown-trailer-intro-201375.mp3',
+            songName: 'Dark Action'
+        },
+        {
+            path: 'static/soundtrack/let-the-mystery-unfold-122118.mp3',
+            songName: 'Mystery Unfold'
+        },
+    ];
+
+    let song_playing = false;
+
+    // Play song
+    function playSong(){
+        song_playing = true;
+        audio.play();
+        playpause.classList.add('active');
+        playpause.innerHTML = '<ion-icon name="pause-outline"></ion-icon>';
+    }
+
+    // Pause song
+    function pauseSong(){
+        song_playing = false;
+        audio.pause();
+        playpause.classList.remove('active');
+        playpause.innerHTML = '<ion-icon name="play-outline"></ion-icon>';
+    }
+
+    // play or pause song on click
+    playpause.addEventListener('click', () => (song_playing ? pauseSong() : playSong()));
+
+    // load song
+    function loadSong(songList){
+        title.textContent = songList.songName;
+        audio.src = songList.path;
+    }
+
+    // current song
+    let i = 0;
+    loadSong(songList[i]);
+
+    // previous song
+    function prevSong(){
+      i--;
+      if(i < 0){
+        i = songList.length - 1;
+      }
+      loadSong(songList[i]);
+      playSong();
+    }
+    prev.addEventListener('click', prevSong);
+
+     // next song
+     function nextSong(){
+      i++;
+      if(i > songList.length -1 ){
+        i = 0;
+      }
+      loadSong(songList[i]);
+      playSong();
+    }
+    next.addEventListener('click', nextSong);
+
+    function changeCSS(cssfile, cssLinkIndex){
+      var oldlink = document.getElementsByTagName('link').item(cssLinkIndex);
+      var newlink = document.createElement('link');
+      newlink.setAttribute('rel', 'stylesheet');
+      newlink.setAttribute('type', 'text/css');
+      newlink.setAttribute('href', cssfile);
+      document.getElementsByTagName('head').item(cssLinkIndex).replaceChild(newlink, oldlink);
+    }
+    </script>
+
   </body>
 </html>

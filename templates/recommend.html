@@ -7,7 +7,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../static/icon/favicon.ico" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
@@ -21,15 +21,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
-
 </head>
 
 <body id="content">
 
   {% if title|length %}
 
+  <!-- =================== MOVIE TITLE ==================== -->
   <div class="results">
     <center>
       <h2 id="name" class="text-uppercase" style="font-family: 'Rowdies', cursive;">{{title}}</h2>
@@ -39,13 +37,15 @@
 
   <div id="mycontent">
     <div id="mcontent">
+
+      <!-- ========================= MOVIE INFORMATION ============================ -->
       <div class="poster-lg">
-        <img class="poster" style="border-radius: 40px;margin-left: 90px;" height="400" width="250" src={{poster}}>
+        <img class="poster" style="border-radius: 40px;margin-left: 90px;" src={{poster}}>
       </div>
       <div class="poster-sm text-center">
-        <img class="poster" style="border-radius: 40px;margin-bottom: 5%;" height="400" width="250" src={{poster}}>
+        <img class="poster" style="border-radius: 40px;margin-bottom: 5%;" src={{poster}}>
       </div>
-      <div id="details">
+      <div id="details" class="information">
         <br />
         <h6 id="title" style="color: white;"><span class="special">TITLE</span>: &nbsp;{{title}}</h6>
         <h6 id="overview" style="color: white;max-width: 85%"><span class="special">OVERVIEW</span>:
@@ -63,6 +63,7 @@
   </div>
   <br />
 
+  <!--  ===================== CAST DETAILS ====================== -->
   {% for name, details in cast_details.items() if not cast_details.hidden %}
   <div class="modal fade" id="{{details[0]}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3"
     aria-hidden="true">
@@ -75,6 +76,7 @@
           </button>
         </div>
 
+        <!-- =================== SELECTED CAST DETAILS ======================= -->
         <div class="modal-body">
           <img class="profile-pic" src="{{details[1]}}" alt="{{name}} - profile"
             style="width: 250px;height:400px;border-radius: 10px;" />
@@ -131,6 +133,7 @@
   {% endif %}
   <br />
 
+  <!-- ==================== USER REVIEWS ======================= -->
   <center>
     {% if reviews %}
     <h2 style="font-family: 'Rowdies', cursive;color:white">USER REVIEWS</h2>
@@ -148,6 +151,8 @@
           <tr style="background-color:#000000a3;">
             <td>{{review}}</td>
             <td>
+
+              <!-- ===================== SENTIMENTAL ANALYSIS ================= -->
               <center>
                 {{status}} :
                 {% if status =='Positive' %}
@@ -163,6 +168,7 @@
       </table>
     </div>
 
+    <!-- ========================= INVALID MOVIE RESULTS =================== -->
     {% if (curr_date) and (movie_rel_date) %}
     {% elif curr_date < movie_rel_date %} 
     <div style="color:white;">
@@ -181,9 +187,9 @@
   </center>
   <br />
 
-
   {% if movie_cards|length > 1 %}
 
+  <!-- ================== MOVIE RECOMMENDATION SECTION ======================= -->
   <div class="movie" style="color: #E8E8E8;">
     <center>
       <h2 style="font-family: 'Rowdies', cursive;">RECOMMENDED MOVIES FOR YOU</h2>
@@ -220,6 +226,7 @@
   <br /><br /><br /><br />
   </div>
 
+  <!-- ===================== SEARCHED MOVIE CARDS DETAILS ================= -->
   {% else %}
   {% if movie_cards|length > 1 %}
   <div class="container">
@@ -227,6 +234,8 @@
       <center>
         <h2 style="font-family: 'Rowdies', cursive;">Multiple matches found</h2>
       </center>
+    <br>
+    <br>
     </div>
 
     <div class="movie-content">
@@ -259,14 +268,13 @@
   {% endif %}
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="{{url_for('static', filename='recommend.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='js/recommend.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-
 
 </body>
 </html>
